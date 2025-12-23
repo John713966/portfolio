@@ -1,165 +1,849 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>portfolio</title>
+    <title>Portfolio - John Geraldo Francois</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
-        body.dark-mode {
-            background-color: #121212;
-            color: #ffffff;
+        :root {
+            --bg-primary: #ffffff;
+            --text-primary: #333333;
+            --card-bg: #f8f9fa;
+            --border-color: #dee2e6;
+            --accent-color: #0d6efd;
         }
 
+        body.dark-mode {
+            --bg-primary: #121212;
+            --text-primary: #ffffff;
+            --card-bg: #1e1e1e;
+            --border-color: #333333;
+            --accent-color: #0d6efd;
+        }
+
+        body {
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .dark-mode {
+            background-color: var(--bg-primary) !important;
+            color: var(--text-primary) !important;
+        }
+
+        .dark-mode .card {
+            background-color: var(--card-bg) !important;
+            border-color: var(--border-color) !important;
+            color: var(--text-primary) !important;
+        }
+
+        .dark-mode .navbar,
         .dark-mode .bg-light {
             background-color: #1e1e1e !important;
         }
 
-        .dark-mode .card {
-            background-color: #2d2d2d;
-            color: #ffffff;
+        .dark-mode .border-bottom,
+        .dark-mode .border-top {
+            border-color: var(--border-color) !important;
         }
 
-        .dark-mode .border-bottom {
-            border-bottom-color: #444 !important;
+        .dark-mode .text-muted {
+            color: #999999 !important;
         }
 
-        .dark-mode .btn-primary {
-            background-color: #0d6efd;
-            border-color: #0d6efd;
+        .dark-mode .navbar-nav .nav-link {
+            color: #ffffff !important;
+        }
+
+        .dark-mode .navbar-nav .nav-link:hover {
+            color: #0d6efd !important;
         }
 
         .dark-mode .btn-outline-primary {
-            color: #0d6efd;
-            border-color: #0d6efd;
+            color: var(--accent-color);
+            border-color: var(--accent-color);
         }
 
         .dark-mode .btn-outline-primary:hover {
-            background-color: #0d6efd;
+            background-color: var(--accent-color);
+            border-color: var(--accent-color);
             color: #ffffff;
+        }
+
+        .dark-mode .btn-primary {
+            background-color: var(--accent-color);
+            border-color: var(--accent-color);
+        }
+
+        .card {
+            transition: all 0.3s ease;
+            border: 1px solid var(--border-color);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .dark-mode .card:hover {
+            box-shadow: 0 10px 25px rgba(255,255,255,0.1);
+        }
+
+        .hero-section {
+            min-height: 70vh;
+            display: flex;
+            align-items: center;
+        }
+
+        .profile-img {
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 5px solid var(--accent-color);
+        }
+
+        .skill-badge {
+            margin: 5px;
+            padding: 8px 15px;
+            background-color: var(--accent-color);
+            color: white;
+            border-radius: 25px;
+            font-size: 0.9em;
+        }
+
+        .dark-mode .skill-badge {
+            background-color: var(--accent-color);
+        }
+
+        .project-card {
+            height: 100%;
+        }
+
+        .nav-link.active {
+            color: var(--accent-color) !important;
+            font-weight: bold;
+        }
+
+        .dark-mode-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            border: none;
+            background-color: var(--accent-color);
+            color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+        }
+
+        .dark-mode-toggle:hover {
+            transform: scale(1.1);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        }
+
+        .dark-mode .dark-mode-toggle {
+            background-color: #ffd700;
+            color: #333;
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-left: 40px;
+            margin-bottom: 30px;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 10px;
+            top: 0;
+            bottom: -30px;
+            width: 2px;
+            background-color: var(--accent-color);
+        }
+
+        .timeline-item:last-child::before {
+            display: none;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 0;
+            top: 5px;
+            width: 20px;
+            height: 20px;
+            background-color: var(--accent-color);
+            border-radius: 50%;
+            border: 3px solid var(--bg-primary);
+        }
+
+        .dark-mode .timeline-dot {
+            border-color: var(--bg-primary);
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .fade-in.delay-1 { animation-delay: 0.1s; }
+        .fade-in.delay-2 { animation-delay: 0.2s; }
+        .fade-in.delay-3 { animation-delay: 0.3s; }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section-title {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 30px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background-color: var(--accent-color);
         }
     </style>
 </head>
-
 <body class="dark-mode">
-    <!-- Header Section -->
-    <header class="bg-light py-5">
+    <!-- Dark Mode Toggle -->
+    <button class="dark-mode-toggle" onclick="toggleDarkMode()" title="Basculer le mode sombre">
+        <i class="fas fa-sun"></i>
+    </button>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="#home">
+                <i class="fas fa-code me-2"></i>John Geraldo Francois
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#home">Accueil</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">À propos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#projects">Projets</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#skills">Compétences</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#education">Formation</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section">
         <div class="container">
             <div class="row align-items-center">
-                <div class="col-md-3 text-center">
-                    <img src="info.png" alt="Profile Picture" class="rounded-circle img-fluid mb-3"
-                        style="width: 200px; height: 200px; object-fit: cover;">
+                <div class="col-lg-4 text-center mb-4 mb-lg-0">
+                    <img src="info.png" alt="John Geraldo Francois" class="profile-img fade-in">
                 </div>
-                <div class="col-md-9">
-                    <h1 class="display-4">Geraldo</h1>
-                    <p class="lead">ING Informatique</p>
-                    <div class="d-flex flex-wrap gap-3">
-                        <a href="tel:" class="text-decoration-none">📱 +509 3414-6697 / +509 41296527</a>
-                        <a href="mailto:" class="text-decoration-none">📧 francoisjohngeraldo10@gmail.com</a>
-                        <a href="#" class="text-decoration-none">💼 John Geraldo Francois</a>
-                        <a href="https://github.com/John713966" class="text-decoration-none">📚 https://github.com/John713966</a>
+                <div class="col-lg-8">
+                    <div class="fade-in delay-1">
+                        <h1 class="display-4 fw-bold mb-3">John Geraldo Francois</h1>
+                        <h2 class="h4 text-muted mb-4">
+                            <i class="fas fa-laptop-code me-2"></i>
+                            Étudiant en Informatique & Développeur
+                        </h2>
+                        <p class="lead mb-4">
+                            Passionné par les technologies modernes et le développement d'applications innovantes. 
+                            Spécialisé dans les solutions web avec une approche axée sur la qualité et l'expérience utilisateur.
+                        </p>
+                        <div class="d-flex flex-wrap gap-3">
+                            <a href="#contact" class="btn btn-primary btn-lg">
+                                <i class="fas fa-envelope me-2"></i>
+                                Me Contacter
+                            </a>
+                            <a href="#projects" class="btn btn-outline-primary btn-lg">
+                                <i class="fas fa-eye me-2"></i>
+                                Voir mes Projets
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </header>
+    </section>
 
-    <div class="container py-5">
-        <!-- About Me Section -->
-        <section class="mb-5">
-            <h2 class="border-bottom pb-2 mb-4">About Me</h2>
-            <p>Bonjour, je suis John Geraldo Francois, étudiant en informatique à l'Université PAODES. Passionné par la technologie et le développement logiciel, je me spécialise dans les langages de programmation tels que PHP, Java, et les bases de données MySQL et Oracle.</p>
-            <p>Mon parcours académique et mes compétences techniques me permettent de concevoir et développer des solutions informatiques innovantes. Je suis quelqu'un de loyal, curieux, patient et dévoué, toujours prêt à apprendre de nouvelles technologies et à relever de nouveaux défis.</p>
-            <p>Mon objectif est de contribuer au monde numérique en créant des applications et systèmes qui améliorent la vie des utilisateurs tout en respectant les meilleures pratiques de développement.</p>
-            <div class="mt-4">
-                <a href="JOHNGERALDO W_CV.pdf" class="btn btn-primary">Voir mon CV</a>
-            </div>
-        </section>
-
-        <!-- Education Section -->
-        <section class="mb-5">
-            <h2 class="border-bottom pb-2 mb-4">Formation</h2>
-            <h3>PAODES Universite</h3>
-            <p>2020 - 2024</p>
-        </section>
-
-        <!-- Project Experience Section -->
-        <section class="mb-5">
-            <h2 class="border-bottom pb-2 mb-4">Expérience de Projets</h2>
-            <div class="card mb-3">
-                <div class="card-body">
-
-                    <h3 class="card-title">La Grande Chasse aux Balles</h3>
-                    <p class="text-muted">Durée : Janvier 2023 - Mars 2023</p>
-                    <p class="card-text">J'ai dirigé une équipe de chiens pour rapporter plus de 100 balles en une seule journée. Mon rôle était de
-                        motiver l'équipe et m'assurer que toutes les balles soient rapporter en sécurité.</p>
-                    <p class="card-text">Technologies utilisées : Mâchoires solides, pattes rapides et odorat développé.</p>
-                    <p class="card-text">Réalisations clés : Augmentation de l'efficacité de récupération des balles de 50%.</p>
-                    <a href="#" class="btn btn-outline-primary">Voir le Projet</a>
+    <!-- About Section -->
+    <section id="about" class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto text-center mb-5">
+                    <h2 class="section-title">À propos de moi</h2>
+                    <p class="lead">
+                        Développeur passionné  en développement web et desktop, 
+                        toujours à la recherche de nouveaux défis technologiques.
+                    </p>
                 </div>
             </div>
-            <div class="card mb-3">
-                <div class="card-body">
-                    <h3 class="card-title">Surveillance du Quartier</h3>
-                    <p class="text-muted">Durée : En cours</p>
-                    <p class="card-text">Patrouille dans le quartier pour assurer la sécurité. Mon rôle inclut
-                        d'aboyer sur les activités suspectes et de protéger ma famille humaine.</p>
-                    <p class="card-text">Technologies utilisées : Aboiement puissant, yeux perçants et fort sens du territoire.</p>
-                    <p class="card-text">Réalisations clés : Réduction des invasions d'écureuils de 80%.</p>
+            <div class="row">
+                <div class="col-lg-6 mb-4">
+                    <div class="card h-100 fade-in delay-2">
+                        <div class="card-body">
+                            <h4 class="card-title">
+                                <i class="fas fa-user me-2"></i>
+                                Profil Professionnel
+                            </h4>
+                            <p class="card-text">
+                                Étudiant en informatique à l'Université PAODES, je me spécialise dans le développement 
+                                d'applications web et desktop. Mon parcours académique m'a permis d'acquérir une 
+                                solide foundation en programmation et en gestion de bases de données.
+                            </p>
+                            <p class="card-text">
+                                Je suis rigoureux, curieux et toujours motivé par l'apprentissage continu des 
+                                nouvelles technologies. Mon objectif est de contribuer à des projets innovants 
+                                qui ont un impact positif sur les utilisateurs.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 mb-4">
+                    <div class="card h-100 fade-in delay-3">
+                        <div class="card-body">
+                            <h4 class="card-title">
+                                <i class="fas fa-lightbulb me-2"></i>
+                                Approche du Développement
+                            </h4>
+                            <p class="card-text">
+                                <strong>Méthodologie :</strong> J'adopte une approche méthodique en utilisant 
+                                des frameworks modernes et les meilleures pratiques de développement.
+                            </p>
+                            <p class="card-text">
+                                <strong>Technologies :</strong> Je maîtrise plusieurs langages et frameworks, 
+                                ce qui me permet de choisir les outils les plus adaptés à chaque projet.
+                            </p>
+                            <p class="card-text">
+                                <strong>Qualité :</strong> Je privilégie un code propre, bien documenté et 
+                                maintenable pour garantir la durabilité des solutions développées.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-                    <a href="#" class="btn btn-outline-primary">Voir le Projet</a>
+    <!-- Projects Section -->
+    <section id="projects" class="py-5 bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto text-center mb-5">
+                    <h2 class="section-title">Mes Projets</h2>
+                    <p class="lead">
+                        Découvrez mes réalisations et projets en cours de développement.
+                    </p>
                 </div>
             </div>
-        </section>
+            <div class="row">
+                <div class="col-lg-6 mb-4">
+                    <div class="card project-card fade-in delay-1">
+                        <div class="card-body">
+                            <div class="d-flex align-items-start mb-3">
+                                <div class="me-3">
+                                    <i class="fas fa-utensils fa-2x text-primary"></i>
+                                </div>
+                                <div class="flex-grow-1">
+                                    <h3 class="card-title">Système de Gestion de Restaurant</h3>
+                                    <span class="badge bg-warning text-dark">En cours de développement</span>
+                                </div>
+                            </div>
+                            <p class="card-text">
+                                Application web complète pour la gestion quotidienne d'un restaurant. 
+                                Cette solution moderne permet de gérer les commandes, le stock, les tables, 
+                                et fournit des statistiques détaillées pour optimiser les opérations.
+                            </p>
+                            <h5 class="mt-4">
+                                <i class="fas fa-cogs me-2"></i>
+                                Fonctionnalités
+                            </h5>
+                            <ul class="list-unstyled">
+                                <li><i class="fas fa-check text-success me-2"></i>Gestion des commandes temps réel</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Suivi des stocks et alertes</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Tableau de bord statistique</li>
+                            </ul>
+                            <div class="mt-4">
+                                <h6>
+                                    <i class="fas fa-tools me-2"></i>
+                                    Technologies
+                                </h6>
+                                <div class="mt-2">
+                                    <span class="skill-badge">PHP 8.x</span>
+                                    <span class="skill-badge">MySQL</span>
+                                    <span class="skill-badge">JavaScript</span>
+                                    <span class="skill-badge">Bootstrap 5</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-        <!-- Skills Section -->
-        <section class="mb-5">
-            <h2 class="border-bottom pb-2 mb-4">Compétences</h2>
-            <div class="mb-4">
-                <h3>Compétences Techniques</h3>
-                <div class="d-flex flex-wrap gap-2">
-                    <span class="badge bg-primary">PHP</span>
-                    <span class="badge bg-primary">MYSQL</span>
-                    <span class="badge bg-primary">ORACLE</span>
-                    <span class="badge bg-primary">JAVA</span>
-                    <span class="badge bg-primary">LINUX</span>
+                <div class="col-lg-6 mb-4">
+                    <div class="card project-card fade-in delay-2">
+                        <div class="card-body">
+                            <div class="d-flex align-items-start mb-3">
+                                <div class="me-3">
+                                    <i class="fas fa-shopping-cart fa-2x text-success"></i>
+                                </div>
+                                <div class="flex-grow-1">
+                                    <h3 class="card-title">Plateforme E-commerce</h3>
+                                    <span class="badge bg-info">Planifié</span>
+                                </div>
+                            </div>
+                            <p class="card-text">
+                                Plateforme e-commerce moderne avec gestion complète des produits, panier d'achat, 
+                                système de paiement et interface administrateur pour la gestion des commandes.
+                            </p>
+                            <h5 class="mt-4">
+                                <i class="fas fa-cogs me-2"></i>
+                                Fonctionnalités
+                            </h5>
+                            <ul class="list-unstyled">
+                                <li><i class="fas fa-check text-success me-2"></i>Catalogue produits dynamique</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Panier et checkout sécurisé</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Interface administrateur</li>
+                            </ul>
+                            <div class="mt-4">
+                                <h6>
+                                    <i class="fas fa-tools me-2"></i>
+                                    Technologies
+                                </h6>
+                                <div class="mt-2">
+                                    <span class="skill-badge">React.js</span>
+                                    <span class="skill-badge">Node.js</span>
+                                    <span class="skill-badge">Express.js</span>
+                                    <span class="skill-badge">MongoDB</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="mb-4">
-                <h3>Qualités</h3>
-                <div class="d-flex flex-wrap gap-2">
-                    <span class="badge bg-primary">Loyal</span>
-                    <span class="badge bg-primary">Curieux</span>
-                    <span class="badge bg-primary">Patient</span>
-                    <span class="badge bg-primary">Dévoué</span>
-                </div>
-            </div>
-            <div class="mb-4">
-                <h3>Langues</h3>
-                <div class="d-flex flex-wrap gap-2">
-                    <span class="badge bg-primary">Français (Intermédiaire)</span>
-                    <span class="badge bg-primary">Anglais (Débutant)</span>
-                    <span class="badge bg-primary">Créole (Maternelle)</span>
-                </div>
-            </div>
-        </section>
-    </div>
 
+                <div class="col-lg-6 mb-4">
+                    <div class="card project-card fade-in delay-3">
+                        <div class="card-body">
+                            <div class="d-flex align-items-start mb-3">
+                                <div class="me-3">
+                                    <i class="fas fa-mobile-alt fa-2x text-warning"></i>
+                                </div>
+                                <div class="flex-grow-1">
+                                    <h3 class="card-title">Application Mobile de Suivi</h3>
+                                    <span class="badge bg-secondary">Idée de projet</span>
+                                </div>
+                            </div>
+                            <p class="card-text">
+                                Application mobile de suivi personnel pour la gestion des tâches, 
+                                objectifs et statistiques personnelles avec interface moderne.
+                            </p>
+                            <h5 class="mt-4">
+                                <i class="fas fa-cogs me-2"></i>
+                                Fonctionnalités
+                            </h5>
+                            <ul class="list-unstyled">
+                                <li><i class="fas fa-check text-success me-2"></i>Gestion des tâches</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Objectifs et métriques</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Interface intuitive</li>
+                            </ul>
+                            <div class="mt-4">
+                                <h6>
+                                    <i class="fas fa-tools me-2"></i>
+                                    Technologies
+                                </h6>
+                                <div class="mt-2">
+                                    <span class="skill-badge">React Native</span>
+                                    <span class="skill-badge">Firebase</span>
+                                    <span class="skill-badge">Redux</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6 mb-4">
+                    <div class="card project-card fade-in delay-4">
+                        <div class="card-body">
+                            <div class="d-flex align-items-start mb-3">
+                                <div class="me-3">
+                                    <i class="fas fa-building fa-2x text-info"></i>
+                                </div>
+                                <div class="flex-grow-1">
+                                    <h3 class="card-title">Programme de Gestion de Quartier</h3>
+                                    <span class="badge bg-secondary">idée de projet</span>
+                                </div>
+                            </div>
+                            <p class="card-text">
+                                Application web pour la gestion communautaire du quartier, incluant la gestion des résidents, événements, signalements, etc.
+                            </p>
+                            <h5 class="mt-4">
+                                <i class="fas fa-cogs me-2"></i>
+                                Fonctionnalités
+                            </h5>
+                            <ul class="list-unstyled">
+                                <li><i class="fas fa-check text-success me-2"></i>Gestion des résidents</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Planification d'événements</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Signalement de problèmes</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Tableau de bord communautaire</li>
+                            </ul>
+                            <div class="mt-4">
+                                <h6>
+                                    <i class="fas fa-tools me-2"></i>
+                                    Technologies
+                                </h6>
+                                <div class="mt-2">
+                                    <span class="skill-badge">PHP</span>
+                                    <span class="skill-badge">MySQL</span>
+                                    <span class="skill-badge">JavaScript</span>
+                                    <span class="skill-badge">Bootstrap</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto text-center mb-5">
+                    <h2 class="section-title">Mes Compétences</h2>
+                    <p class="lead">
+                        Un aperçu de mes compétences techniques et soft skills.
+                    </p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6 mb-4">
+                    <div class="card h-100 fade-in delay-1">
+                        <div class="card-body text-center">
+                            <h4 class="card-title">
+                                <i class="fas fa-code me-2"></i>
+                                Compétences Techniques
+                            </h4>
+                            <div class="mt-4">
+                                <h5 class="text-muted mb-3">Langages de Programmation</h5>
+                                <span class="skill-badge">PHP</span>
+                                <span class="skill-badge">Java</span>
+                                <span class="skill-badge">JavaScript</span>
+                                <span class="skill-badge">HTML/CSS</span>
+                                <span class="skill-badge">SQL</span>
+                            </div>
+                            <div class="mt-4">
+                                <h5 class="text-muted mb-3">Frameworks & Bibliothèques</h5>
+                                <span class="skill-badge">Bootstrap</span>
+                                <span class="skill-badge">jQuery</span>
+                            </div>
+                            <div class="mt-4">
+                                <h5 class="text-muted mb-3">Bases de Données</h5>
+                                <span class="skill-badge">MySQL</span>
+                                <span class="skill-badge">Oracle</span>
+                            </div>
+                            <div class="mt-4">
+                                <h5 class="text-muted mb-3">Outils & Technologies</h5>
+                                <span class="skill-badge">Python</span>
+                                <span class="skill-badge">Linux</span>
+                                <span class="skill-badge">Git</span>
+                                <span class="skill-badge">Apache</span>
+                                <span class="skill-badge">XAMPP</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 mb-4">
+                    <div class="card h-100 fade-in delay-2">
+                        <div class="card-body text-center">
+                            <h4 class="card-title">
+                                <i class="fas fa-users me-2"></i>
+                                Soft Skills
+                            </h4>
+                            <div class="mt-4">
+                                <h5 class="text-muted mb-3">Qualités Professionnelles</h5>
+                                <span class="skill-badge">Loyal</span>
+                                <span class="skill-badge">Curieux</span>
+                                <span class="skill-badge">Dévoué</span>
+                                <span class="skill-badge">Rigoureux</span>
+                            </div>
+                            <div class="mt-4">
+                                <h5 class="text-muted mb-3">Compétences Transversales</h5>
+                                <span class="skill-badge">Résolution de problèmes</span>
+                                <span class="skill-badge">Travail d'équipe</span>
+                                <span class="skill-badge">Apprentissage autonome</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="py-5 bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto text-center mb-5">
+                    <h2 class="section-title">Formation</h2>
+                    <p class="lead">
+                        Mon parcours académique et mes certifications.
+                    </p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-10 mx-auto">
+                    <div class="timeline">
+                        <div class="timeline-item fade-in delay-1">
+                            <div class="timeline-dot"></div>
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="card-title">
+                                        <i class="fas fa-graduation-cap me-2"></i>
+                                        Licence en Informatique
+                                    </h4>
+                                    <h5 class="text-muted">Université PAODES</h5>
+                                    <p class="text-muted">
+                                        <i class="fas fa-calendar me-2"></i>
+                                        2020 - 2024
+                                    </p>
+                                    <p class="card-text">
+                                        Formation complète en informatique couvrant les aspects théoriques et pratiques 
+                                        du développement logiciel, des bases de données, et des systèmes d'information.
+                                    </p>
+                                    <div class="mt-3">
+                                        <h6 class="fw-bold">Domaines d'étude :</h6>
+                                        <span class="skill-badge">Programmation</span>
+                                        <span class="skill-badge">Base de données</span>
+                                        <span class="skill-badge">Réseaux</span>
+                                        <span class="skill-badge">Génie logiciel</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto text-center mb-5">
+                    <h2 class="section-title">Me Contacter</h2>
+                    <p class="lead">
+                        N'hésitez pas à me contacter pour discuter de projets ou opportunités.
+                    </p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <div class="card fade-in delay-1">
+                        <div class="card-body">
+                            <div class="row text-center">
+                                <div class="col-md-4 mb-3">
+                                    <div class="p-3">
+                                        <i class="fas fa-phone fa-2x text-primary mb-3"></i>
+                                        <h5>Téléphone</h5>
+                                        <p class="text-muted">
+                                            <a href="tel:+50934146697" class="text-decoration-none">
+                                                +509 3414-6697
+                                            </a>
+                                        </p>
+                                        <p class="text-muted">
+                                            <a href="tel:+50941296527" class="text-decoration-none">
+                                                +509 4129-6527
+                                            </a>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <div class="p-3">
+                                        <i class="fas fa-envelope fa-2x text-primary mb-3"></i>
+                                        <h5>Email</h5>
+                                        <p class="text-muted">
+                                            <a href="mailto:francoisjohngeraldo10@gmail.com" class="text-decoration-none">
+                                                francoisjohngeraldo10@gmail.com
+                                            </a>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <div class="p-3">
+                                        <i class="fab fa-github fa-2x text-primary mb-3"></i>
+                                        <h5>GitHub</h5>
+                                        <p class="text-muted">
+                                            <a href="https://github.com/John713966" target="_blank" class="text-decoration-none">
+                                                John713966
+                                            </a>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="text-center mt-4">
+                                <a href="mailto:francoisjohngeraldo10@gmail.com" class="btn btn-primary btn-lg me-3">
+                                    <i class="fas fa-paper-plane me-2"></i>
+                                    Envoyer un Email
+                                </a>
+                                <a href="https://github.com/John713966" target="_blank" class="btn btn-outline-primary btn-lg">
+                                    <i class="fab fa-github me-2"></i>
+                                    Voir mon GitHub
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-light py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto text-center">
+                    <p class="mb-2">
+                        <i class="fas fa-code me-2"></i>
+                        Développé avec passion par John Geraldo Francois
+                    </p>
+                    <p class="text-muted">
+                        © 2024 Portfolio. Tous droits réservés.
+                    </p>
+                    <div class="mt-3">
+                        <a href="mailto:francoisjohngeraldo10@gmail.com" class="text-light me-3" title="Email">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                        <a href="https://github.com/John713966" target="_blank" class="text-light me-3" title="GitHub">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="tel:+50934146697" class="text-light" title="Téléphone">
+                            <i class="fas fa-phone"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        const darkModeToggle = document.getElementById('darkModeToggle');
-        const body = document.body;
-
-        darkModeToggle.addEventListener('click', () => {
-            body.classList.toggle('dark-mode');
+        // Dark Mode Toggle Functionality
+        function toggleDarkMode() {
+            const body = document.body;
+            const button = document.querySelector('.dark-mode-toggle i');
+            
             if (body.classList.contains('dark-mode')) {
-                darkModeToggle.textContent = '☀️ Light Mode';
+                body.classList.remove('dark-mode');
+                button.className = 'fas fa-moon';
+                localStorage.setItem('darkMode', 'disabled');
             } else {
-                darkModeToggle.textContent = '🌙 Dark Mode';
+                body.classList.add('dark-mode');
+                button.className = 'fas fa-sun';
+                localStorage.setItem('darkMode', 'enabled');
+            }
+        }
+
+        // Load saved dark mode preference
+        window.addEventListener('load', function() {
+            const darkMode = localStorage.getItem('darkMode');
+            const button = document.querySelector('.dark-mode-toggle i');
+            
+            if (darkMode === 'disabled') {
+                document.body.classList.remove('dark-mode');
+                button.className = 'fas fa-moon';
+            } else {
+                // Default to dark mode as requested
+                document.body.classList.add('dark-mode');
+                button.className = 'fas fa-sun';
             }
         });
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-</body>
 
-</html>z
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Update active navigation link based on scroll position
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('.navbar-nav .nav-link');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 100;
+                if (window.pageYOffset >= sectionTop) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Add animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all fade-in elements
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
