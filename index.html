@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -85,11 +86,11 @@
 
         .card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
         }
 
         .dark-mode .card:hover {
-            box-shadow: 0 10px 25px rgba(255,255,255,0.1);
+            box-shadow: 0 10px 25px rgba(255, 255, 255, 0.1);
         }
 
         .hero-section {
@@ -139,13 +140,13 @@
             border: none;
             background-color: var(--accent-color);
             color: white;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
             transition: all 0.3s ease;
         }
 
         .dark-mode-toggle:hover {
             transform: scale(1.1);
-            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
         }
 
         .dark-mode .dark-mode-toggle {
@@ -194,9 +195,17 @@
             animation: fadeInUp 0.6s ease forwards;
         }
 
-        .fade-in.delay-1 { animation-delay: 0.1s; }
-        .fade-in.delay-2 { animation-delay: 0.2s; }
-        .fade-in.delay-3 { animation-delay: 0.3s; }
+        .fade-in.delay-1 {
+            animation-delay: 0.1s;
+        }
+
+        .fade-in.delay-2 {
+            animation-delay: 0.2s;
+        }
+
+        .fade-in.delay-3 {
+            animation-delay: 0.3s;
+        }
 
         @keyframes fadeInUp {
             to {
@@ -223,6 +232,7 @@
         }
     </style>
 </head>
+
 <body class="dark-mode">
     <!-- Dark Mode Toggle -->
     <button class="dark-mode-toggle" onclick="toggleDarkMode()" title="Basculer le mode sombre">
@@ -233,7 +243,7 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
         <div class="container">
             <a class="navbar-brand fw-bold" href="#home">
-                <i class="fas fa-code me-2"></i>John Geraldo Francois
+                <i class="fas fa-code me-2"></i>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
@@ -278,11 +288,16 @@
                             Étudiant en Informatique & Développeur
                         </h2>
                         <p class="lead mb-4">
-                            Passionné par les technologies modernes et le développement d'applications innovantes. 
-                            Spécialisé dans les solutions web avec une approche axée sur la qualité et l'expérience utilisateur.
+                            Passionné par les technologies modernes et le développement d'applications innovantes.
+                            Spécialisé dans les solutions web avec une approche axée sur la qualité et l'expérience
+                            utilisateur.
                         </p>
                         <div class="d-flex flex-wrap gap-3">
-                            <a href="#contact" class="btn btn-primary btn-lg">
+                            <a href="moncv .pdf" target="_blank" class="btn btn-primary btn-lg">
+                                <i class="fas fa-file-pdf me-2"></i>
+                                Télécharger mon CV
+                            </a>
+                            <a href="#contact" class="btn btn-outline-primary btn-lg">
                                 <i class="fas fa-envelope me-2"></i>
                                 Me Contacter
                             </a>
@@ -304,7 +319,7 @@
                 <div class="col-lg-8 mx-auto text-center mb-5">
                     <h2 class="section-title">À propos de moi</h2>
                     <p class="lead">
-                        Développeur passionné  en développement web et desktop, 
+                        Développeur passionné en développement web et desktop,
                         toujours à la recherche de nouveaux défis technologiques.
                     </p>
                 </div>
@@ -318,13 +333,13 @@
                                 Profil Professionnel
                             </h4>
                             <p class="card-text">
-                                Étudiant en informatique à l'Université PAODES, je me spécialise dans le développement 
-                                d'applications web et desktop. Mon parcours académique m'a permis d'acquérir une 
+                                Étudiant en informatique à l'Université PAODES, je me spécialise dans le développement
+                                d'applications web et desktop. Mon parcours académique m'a permis d'acquérir une
                                 solide foundation en programmation et en gestion de bases de données.
                             </p>
                             <p class="card-text">
-                                Je suis rigoureux, curieux et toujours motivé par l'apprentissage continu des 
-                                nouvelles technologies. Mon objectif est de contribuer à des projets innovants 
+                                Je suis rigoureux, curieux et toujours motivé par l'apprentissage continu des
+                                nouvelles technologies. Mon objectif est de contribuer à des projets innovants
                                 qui ont un impact positif sur les utilisateurs.
                             </p>
                         </div>
@@ -338,15 +353,15 @@
                                 Approche du Développement
                             </h4>
                             <p class="card-text">
-                                <strong>Méthodologie :</strong> J'adopte une approche méthodique en utilisant 
+                                <strong>Méthodologie :</strong> J'adopte une approche méthodique en utilisant
                                 des frameworks modernes et les meilleures pratiques de développement.
                             </p>
                             <p class="card-text">
-                                <strong>Technologies :</strong> Je maîtrise plusieurs langages et frameworks, 
+                                <strong>Technologies :</strong> Je maîtrise plusieurs langages et frameworks,
                                 ce qui me permet de choisir les outils les plus adaptés à chaque projet.
                             </p>
                             <p class="card-text">
-                                <strong>Qualité :</strong> Je privilégie un code propre, bien documenté et 
+                                <strong>Qualité :</strong> Je privilégie un code propre, bien documenté et
                                 maintenable pour garantir la durabilité des solutions développées.
                             </p>
                         </div>
@@ -381,8 +396,8 @@
                                 </div>
                             </div>
                             <p class="card-text">
-                                Application web complète pour la gestion quotidienne d'un restaurant. 
-                                Cette solution moderne permet de gérer les commandes, le stock, les tables, 
+                                Application web complète pour la gestion quotidienne d'un restaurant.
+                                Cette solution moderne permet de gérer les commandes, le stock, les tables,
                                 et fournit des statistiques détaillées pour optimiser les opérations.
                             </p>
                             <h5 class="mt-4">
@@ -406,6 +421,13 @@
                                     <span class="skill-badge">Bootstrap 5</span>
                                 </div>
                             </div>
+                            <div class="mt-4">
+                                <a href="https://github.com/John713966/Restaurant" target="_blank"
+                                    class="btn btn-outline-primary">
+                                    <i class="fab fa-github me-2"></i>
+                                    Voir sur GitHub
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -423,7 +445,7 @@
                                 </div>
                             </div>
                             <p class="card-text">
-                                Plateforme e-commerce moderne avec gestion complète des produits, panier d'achat, 
+                                Plateforme e-commerce moderne avec gestion complète des produits, panier d'achat,
                                 système de paiement et interface administrateur pour la gestion des commandes.
                             </p>
                             <h5 class="mt-4">
@@ -435,18 +457,6 @@
                                 <li><i class="fas fa-check text-success me-2"></i>Panier et checkout sécurisé</li>
                                 <li><i class="fas fa-check text-success me-2"></i>Interface administrateur</li>
                             </ul>
-                            <div class="mt-4">
-                                <h6>
-                                    <i class="fas fa-tools me-2"></i>
-                                    Technologies
-                                </h6>
-                                <div class="mt-2">
-                                    <span class="skill-badge">React.js</span>
-                                    <span class="skill-badge">Node.js</span>
-                                    <span class="skill-badge">Express.js</span>
-                                    <span class="skill-badge">MongoDB</span>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -456,25 +466,25 @@
                         <div class="card-body">
                             <div class="d-flex align-items-start mb-3">
                                 <div class="me-3">
-                                    <i class="fas fa-mobile-alt fa-2x text-warning"></i>
+                                    <i class="fas fa-shield-alt fa-2x text-warning"></i>
                                 </div>
                                 <div class="flex-grow-1">
-                                    <h3 class="card-title">Application Mobile de Suivi</h3>
-                                    <span class="badge bg-secondary">Idée de projet</span>
+                                    <h3 class="card-title">Connexion Sécurisée</h3>
+                                    <span class="badge bg-warning text-dark">En cours de développement</span>
                                 </div>
                             </div>
                             <p class="card-text">
-                                Application mobile de suivi personnel pour la gestion des tâches, 
-                                objectifs et statistiques personnelles avec interface moderne.
+                                Système d'authentification sécurisé avec gestion des utilisateurs,
+                                sessions sécurisées et protection contre les attaques courantes.
                             </p>
                             <h5 class="mt-4">
                                 <i class="fas fa-cogs me-2"></i>
                                 Fonctionnalités
                             </h5>
                             <ul class="list-unstyled">
-                                <li><i class="fas fa-check text-success me-2"></i>Gestion des tâches</li>
-                                <li><i class="fas fa-check text-success me-2"></i>Objectifs et métriques</li>
-                                <li><i class="fas fa-check text-success me-2"></i>Interface intuitive</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Authentification sécurisée</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Gestion des sessions</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Protection CSRF et XSS</li>
                             </ul>
                             <div class="mt-4">
                                 <h6>
@@ -482,9 +492,10 @@
                                     Technologies
                                 </h6>
                                 <div class="mt-2">
-                                    <span class="skill-badge">React Native</span>
-                                    <span class="skill-badge">Firebase</span>
-                                    <span class="skill-badge">Redux</span>
+                                    <span class="skill-badge">PHP+PDO</span>
+                                    <span class="skill-badge">MySQL</span>
+                                    <span class="skill-badge">Docker</span>
+                                    <span class="skill-badge">Nginx</span>
                                 </div>
                             </div>
                         </div>
@@ -504,7 +515,8 @@
                                 </div>
                             </div>
                             <p class="card-text">
-                                Application web pour la gestion communautaire du quartier, incluant la gestion des résidents, événements, signalements, etc.
+                                Application web pour la gestion communautaire du quartier, incluant la gestion des
+                                résidents, événements, signalements, etc.
                             </p>
                             <h5 class="mt-4">
                                 <i class="fas fa-cogs me-2"></i>
@@ -516,18 +528,6 @@
                                 <li><i class="fas fa-check text-success me-2"></i>Signalement de problèmes</li>
                                 <li><i class="fas fa-check text-success me-2"></i>Tableau de bord communautaire</li>
                             </ul>
-                            <div class="mt-4">
-                                <h6>
-                                    <i class="fas fa-tools me-2"></i>
-                                    Technologies
-                                </h6>
-                                <div class="mt-2">
-                                    <span class="skill-badge">PHP</span>
-                                    <span class="skill-badge">MySQL</span>
-                                    <span class="skill-badge">JavaScript</span>
-                                    <span class="skill-badge">Bootstrap</span>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -557,8 +557,6 @@
                             <div class="mt-4">
                                 <h5 class="text-muted mb-3">Langages de Programmation</h5>
                                 <span class="skill-badge">PHP</span>
-                                <span class="skill-badge">Java</span>
-                                <span class="skill-badge">JavaScript</span>
                                 <span class="skill-badge">HTML/CSS</span>
                                 <span class="skill-badge">SQL</span>
                             </div>
@@ -574,11 +572,11 @@
                             </div>
                             <div class="mt-4">
                                 <h5 class="text-muted mb-3">Outils & Technologies</h5>
-                                <span class="skill-badge">Python</span>
                                 <span class="skill-badge">Linux</span>
                                 <span class="skill-badge">Git</span>
                                 <span class="skill-badge">Apache</span>
                                 <span class="skill-badge">XAMPP</span>
+                                <span class="skill-badge">Docker</span>
                             </div>
                         </div>
                     </div>
@@ -638,7 +636,7 @@
                                         2020 - 2024
                                     </p>
                                     <p class="card-text">
-                                        Formation complète en informatique couvrant les aspects théoriques et pratiques 
+                                        Formation complète en informatique couvrant les aspects théoriques et pratiques
                                         du développement logiciel, des bases de données, et des systèmes d'information.
                                     </p>
                                     <div class="mt-3">
@@ -694,7 +692,8 @@
                                         <i class="fas fa-envelope fa-2x text-primary mb-3"></i>
                                         <h5>Email</h5>
                                         <p class="text-muted">
-                                            <a href="mailto:francoisjohngeraldo10@gmail.com" class="text-decoration-none">
+                                            <a href="mailto:francoisjohngeraldo10@gmail.com"
+                                                class="text-decoration-none">
                                                 francoisjohngeraldo10@gmail.com
                                             </a>
                                         </p>
@@ -705,7 +704,8 @@
                                         <i class="fab fa-github fa-2x text-primary mb-3"></i>
                                         <h5>GitHub</h5>
                                         <p class="text-muted">
-                                            <a href="https://github.com/John713966" target="_blank" class="text-decoration-none">
+                                            <a href="https://github.com/John713966" target="_blank"
+                                                class="text-decoration-none">
                                                 John713966
                                             </a>
                                         </p>
@@ -717,7 +717,8 @@
                                     <i class="fas fa-paper-plane me-2"></i>
                                     Envoyer un Email
                                 </a>
-                                <a href="https://github.com/John713966" target="_blank" class="btn btn-outline-primary btn-lg">
+                                <a href="https://github.com/John713966" target="_blank"
+                                    class="btn btn-outline-primary btn-lg">
                                     <i class="fab fa-github me-2"></i>
                                     Voir mon GitHub
                                 </a>
@@ -739,7 +740,7 @@
                         Développé avec passion par John Geraldo Francois
                     </p>
                     <p class="text-muted">
-                        © 2024 Portfolio. Tous droits réservés.
+                        © 2026 Portfolio. Tous droits réservés.
                     </p>
                     <div class="mt-3">
                         <a href="mailto:francoisjohngeraldo10@gmail.com" class="text-light me-3" title="Email">
@@ -763,7 +764,7 @@
         function toggleDarkMode() {
             const body = document.body;
             const button = document.querySelector('.dark-mode-toggle i');
-            
+
             if (body.classList.contains('dark-mode')) {
                 body.classList.remove('dark-mode');
                 button.className = 'fas fa-moon';
@@ -776,10 +777,10 @@
         }
 
         // Load saved dark mode preference
-        window.addEventListener('load', function() {
+        window.addEventListener('load', function () {
             const darkMode = localStorage.getItem('darkMode');
             const button = document.querySelector('.dark-mode-toggle i');
-            
+
             if (darkMode === 'disabled') {
                 document.body.classList.remove('dark-mode');
                 button.className = 'fas fa-moon';
@@ -805,10 +806,10 @@
         });
 
         // Update active navigation link based on scroll position
-        window.addEventListener('scroll', function() {
+        window.addEventListener('scroll', function () {
             const sections = document.querySelectorAll('section[id]');
             const navLinks = document.querySelectorAll('.navbar-nav .nav-link');
-            
+
             let current = '';
             sections.forEach(section => {
                 const sectionTop = section.offsetTop - 100;
@@ -831,7 +832,7 @@
             rootMargin: '0px 0px -50px 0px'
         };
 
-        const observer = new IntersectionObserver(function(entries) {
+        const observer = new IntersectionObserver(function (entries) {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.style.opacity = '1';
@@ -846,4 +847,5 @@
         });
     </script>
 </body>
+
 </html>
